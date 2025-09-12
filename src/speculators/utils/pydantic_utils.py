@@ -170,6 +170,25 @@ class PydanticClassRegistryMixin(ReloadableBaseModel, ABC, ClassRegistryMixin):
         """
         ...
 
+    #     @classmethod
+    #     def _validate_subclass_model(cls, value):
+    #         from collections import Mapping
+
+    #         type_ = (
+    #             value.get(cls.schema_discriminator)
+    #             if isinstance(value, Mapping)
+    #             else getattr(value, cls.schema_discriminator)
+    #         )
+    #         return cls.__pydantic_schema_base_type__.registry[type_].model_validate(value)
+
+    # def gen_serializer_check(check_class):
+    #     def fn(value: Any, handler: SerializerFunctionWrapHandler) -> Any:
+    #         if not isinstance(value, check_class):
+    #             raise ValueError(...)
+    #         return handler(value)
+
+    #     return fn
+
     @classmethod
     def __pydantic_generate_base_schema__(
         cls, handler: GetCoreSchemaHandler
