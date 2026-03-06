@@ -38,7 +38,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           fail: false
-          args: --root-dir "$(pwd)/docs" --verbose --no-progress './docs/**/*.md'
+          args: --root-dir "$(pwd)/docs" --verbose --no-progress './docs/**/*.md' --user-agent 'curl/7.54'
       - name: (DOCS) Create PR Comment
         if: >
           steps.lychee_docs.outputs.exit_code != '0' &&
@@ -53,7 +53,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           fail: false
-          args: --root-dir "$(pwd)" --verbose --no-progress --exclude-path 'docs' './**/*.md'
+          args: --root-dir "$(pwd)" --verbose --no-progress --exclude-path 'docs' './**/*.md' --user-agent 'curl/7.54'
       - name: (REPO) Create PR Comment
         if: >
           steps.lychee_repo.outputs.exit_code != '0' &&
